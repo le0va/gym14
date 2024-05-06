@@ -1,0 +1,22 @@
+.trainings-history__wrapper {
+    display: flex;
+    justify-content: center;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .control-panel {
+            width: 100%;
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+    }
+}
+
+.trainings-history__datepicker {
+    margin-bottom: 15px;
+}

@@ -1,13 +1,11 @@
 import { useMemo } from 'react';
 import { observer } from 'mobx-react';
-import {
-    MaterialReactTable,
-    useMaterialReactTable,
-    type MRT_ColumnDef,
-    MRT_SortingState,
-    MRT_PaginationState,
-    MRT_GlobalFilterTextField
-} from 'material-react-table';
+import { type MRT_ColumnDef } from 'material-react-table';
+import { MaterialReactTable } from 'material-react-table';
+import { useMaterialReactTable } from 'material-react-table';
+import { MRT_SortingState } from 'material-react-table';
+import { MRT_PaginationState } from 'material-react-table';
+import { MRT_GlobalFilterTextField as MRTGlobalFilterTextField } from 'material-react-table';
 import { MRT_Localization_UK } from 'material-react-table/locales/uk';
 import { Updater } from '@tanstack/table-core/build/lib/types';
 import { ITrainingsStore } from '../../store/trainings.store';
@@ -111,7 +109,7 @@ const TrainingsTable = ({ store }: TrainingsTableProps) => {
                     padding: '8px 8px 0 8px'
                 }}
             >
-                <MRT_GlobalFilterTextField table={table} />
+                <MRTGlobalFilterTextField table={table} />
                 <FilterSettings
                     isTableOutputByDate={store.tableOutputByDate}
                     setIsTableOutputByDate={store.setTableOutputByDate.bind(store)}

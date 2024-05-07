@@ -21,7 +21,7 @@ const AccountSettings = ({ store }: AccountSettingsProps) => {
             await store.fetchUserInfo(Number(userId));
         }
         awaitFetchUserInfo();
-    }, []);
+    }, [store]);
 
     return (
         <Form store={store} />

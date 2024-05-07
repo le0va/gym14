@@ -17,7 +17,7 @@ const TrainingsHistory = ({ store }: TrainingsHistoryProps) => {
     useEffect(() => {
         store.setError('');
         store.fetchTrainings();
-    }, [store.searchMRT, store.sortingMRT, store.filterDate, store.tableOutputByDate, store.paginationMRT]);
+    }, [store.searchMRT, store.sortingMRT, store.filterDate, store.tableOutputByDate, store.paginationMRT, store]);
 
     return (
         <div className="trainings-history__wrapper">

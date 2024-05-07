@@ -25,7 +25,7 @@ const TrainingUsers = ({ store, service }: TrainingUsersProps) => {
             const userId = localStorage.getItem('userId');
             store.fetchUserInfo(Number(userId));
         }
-    }, []);
+    }, [store]);
 
     return (
         <div className="training-users__container">

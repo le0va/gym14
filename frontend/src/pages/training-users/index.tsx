@@ -32,7 +32,6 @@ const TrainingUsers = ({ store, service }: TrainingUsersProps) => {
             {/* fsdf */}
             <h1>HeLLLOOEOFJFDS</h1>
             {store.error && <Message type="error">{store.error}</Message>}
-            
             {/* <div>
                 <UsersTable data={store.trainingUsers} />
 

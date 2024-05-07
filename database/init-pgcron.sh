@@ -6,5 +6,5 @@ echo "cron.database_name = 'postgres'" >> /var/lib/postgresql/data/postgresql.co
 pg_ctl -D /var/lib/postgresql/data -l /var/lib/postgresql/data/logfile stop
 pg_ctl -D /var/lib/postgresql/data -l /var/lib/postgresql/data/logfile start
 
-# Сообщение о завершении скриптаa
+# Сообщение о завершении скрипта
 echo "init-pgcron.sh work end"

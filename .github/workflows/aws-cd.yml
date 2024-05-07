@@ -1,5 +1,5 @@
-name: Deployment
-on: workflow_dispatch
+name: AWS deploy
+on: delete
 
 jobs:
 

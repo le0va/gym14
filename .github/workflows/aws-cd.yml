@@ -1,0 +1,37 @@
+name: Deployment
+on: workflow_dispatch
+
+jobs:
+
+  lint:
+    name: Lint code
+    runs_on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJs
+        uses: action/install-nodejs
+      - name: Lint
+        run: "npm run lint"
+
+  test:
+    name: Test code
+    runs_on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJs
+        uses: action/install-nodejs
+      - name: Test
+        run: "npm run test"
+
+  build:
+    name: Build docker image
+    runs_on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install Docker
+        uses: action/install-docker
+      - name: Build
+        command: ["cd app", "docker build . --name 'Gym14@v0.5.3'", "docker push toLeovaRepository Gym14Gym14@v0.5.3"]

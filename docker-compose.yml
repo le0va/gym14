@@ -52,5 +52,3 @@ volumes:
 networks:
   app:
     driver: bridge
-
-a

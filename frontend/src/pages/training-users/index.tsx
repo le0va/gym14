@@ -2,10 +2,10 @@ import { observer } from "mobx-react";
 import { useEffect } from "react";
 import { ITrainingUsersStore } from "../../store/trainingUsers.store";
 import { IUsersService } from "../../services/users.service";
-import UsersTable from "./UsersTable";
+// import UsersTable from "./UsersTable";
 import Message from "../../components/ui/Message";
-import TrainingControlButton from "./TrainingControlButton";
-import ProtectedComponent from "../../navigation/ProtectedComponent";
+// import TrainingControlButton from "./TrainingControlButton";
+// import ProtectedComponent from "../../navigation/ProtectedComponent";
 import isUserAuthorized from "../../utils/isUserAuthorized";
 import './index.scss';
 

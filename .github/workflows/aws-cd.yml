@@ -1,50 +1,35 @@
-name: AWS deploy
+name: AWS EC2 instance deploy
 
 on:
-  push:
-    branches:
-      - 'never-exists'  # Ветка, которая не существует и не будет существовать
+  workflow_run:
+    workflows: ["Frontend CI", "Backend CI", "Database CI"]
+    types: [success]
 
 jobs:
-  do-nothing:
+
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "This workflow does nothing"
-
-
-# on: delete
-
-# jobs:
-
-#   lint:
-#     name: Lint code
-#     runs_on: ubuntu-latest
-#     steps:
-#       - name: Get code
-#         uses: actions/checkout@v3
-#       - name: Install NodeJs
-#         uses: action/install-nodejs
-#       - name: Lint
-#         run: "npm run lint"
-
-#   test:
-#     name: Test code
-#     runs_on: ubuntu-latest
-#     steps:
-#       - name: Get code
-#         uses: actions/checkout@v3
-#       - name: Install NodeJs
-#         uses: action/install-nodejs
-#       - name: Test
-#         run: "npm run test"
-
-#   build:
-#     name: Build docker image
-#     runs_on: ubuntu-latest
-#     steps:
-#       - name: Get code
-#         uses: actions/checkout@v3
-#       - name: Install Docker
-#         uses: action/install-docker
-#       - name: Build
-#         command: ["cd app", "docker build . --name 'Gym14@v0.5.3'", "docker push toLeovaRepository Gym14Gym14@v0.5.3"]
+      - 
+        name: AWS SSM Send-Command
+        uses: peterkimzz/aws-ssm-send-command@v1.1.1
+        with:
+          # AWS access key id
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          # AWS secret access key
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          # Where EC2 instance is
+          aws-region: ${{ secrets.AWS_REGION }}
+          # AWS EC2 Instance id or ids
+          instance-ids: ${{ secrets.AWS_INSTANCE_ID }}
+          # Command execution location
+          working-directory: /home/ubuntu
+          # Bash commands to execute
+          command: |
+            sudo docker-compose stop
+            sudo docker-compose rm -f
+            sudo docker-compose pull
+            sudo docker-compose up -d
+            sudo docker image prune -af
+          # Comment for Send-Command
+          comment: docker-compose.yml file re-pulls newer versions of gym14 images and runs them on the instance

@@ -1,4 +1,5 @@
-import { Navigate, createBrowserRouter } from "react-router-dom";
+import { useMemo } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import AccountSettings from "../pages/account-settings";
 import Auth from "../pages/auth";
@@ -13,38 +14,38 @@ import trainingsStore from "../store/trainings.store";
 import authService from "../services/auth.service";
 
 
-const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <App />,
-        errorElement: <Error />,
-        children: [
-            {
-                index: true,
-                element: <Navigate to="/training-users" />
-            },
-            {
-                path: "/training-users",
-                element: <TrainingUsers store={trainingUsersStore} service={usersService} />
-            },
-            {
-                path: "/trainings-history",
-                element: <TrainingsHistory store={trainingsStore} />
-            },
-            {
-                path: "/account-settings",
-                element:
-                    <ProtectedRoute>
-                        <AccountSettings store={accountSettingsStore} />
-                    </ProtectedRoute>
-            },
-            {
-                path: "/login",
-                element: <Auth service={authService} />
-            }
-        ]
-    },
-])
+const AppRouter = () => {
+    const stableStore = useMemo(() => ({
+        accountSettings: accountSettingsStore,
+        trainingUsers: trainingUsersStore,
+        trainings: trainingsStore,
+    }), []);
+
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<App />}>
+                    <Route index element={<Navigate to="/training-users" />} />
+                    <Route
+                        path="/training-users"
+                        element={<TrainingUsers store={stableStore.trainingUsers} service={usersService} />}
+                    />
+                    <Route path="/trainings-history" element={<TrainingsHistory store={stableStore.trainings} />} />
+                    <Route
+                        path="/account-settings"
+                        element={
+                            <ProtectedRoute>
+                                <AccountSettings store={stableStore.accountSettings} />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route path="/login" element={<Auth service={authService} />} />
+                </Route>
+                <Route path="*" element={<Error />} />
+            </Routes>
+        </Router>
+    );
+};
 
 
-export default router;
+export default AppRouter;

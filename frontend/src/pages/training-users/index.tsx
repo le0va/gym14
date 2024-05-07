@@ -29,9 +29,8 @@ const TrainingUsers = ({ store, service }: TrainingUsersProps) => {
 
     return (
         <div className="training-users__container">
-            <h1>HeLLLOOEOFJFDS</h1>
             {store.error && <Message type="error">{store.error}</Message>}
-            <div>
+            {/* <div>
                 <UsersTable data={store.trainingUsers} />
 
                 <ProtectedComponent redirectTo="/login" condition={isUserAuthorized()}>
@@ -47,7 +46,7 @@ const TrainingUsers = ({ store, service }: TrainingUsersProps) => {
                         />
                     </ProtectedComponent>
                 </ProtectedComponent>
-            </div>
+            </div> */}
         </div>
     );
 }

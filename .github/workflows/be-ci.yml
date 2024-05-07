@@ -63,4 +63,4 @@ jobs:
         context: ./backend
         file: ./backend/Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/backend:latest
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/gym-backend:latest

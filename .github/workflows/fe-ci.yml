@@ -63,4 +63,4 @@ jobs:
         context: ./frontend
         file: ./frontend/Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/frontend:latest
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/gym-frontend:latest

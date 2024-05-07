@@ -1,6 +1,9 @@
 name: Database CI
 
-on:  # Нет триггеров, поэтому воркфлоу никогда не сработает
+on:
+  push:
+    branches:
+      - 'never-exists'  # Ветка, которая не существует и не будет существовать
 
 jobs:
   do-nothing:

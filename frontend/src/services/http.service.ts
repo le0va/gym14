@@ -4,7 +4,7 @@ import { IGetConfig, IPostConfig, IPatchConfig } from "../types";
 class HttpService {
     baseUrl: string;
 
-    constructor(baseUrl = 'http://backend:5000') {
+    constructor(baseUrl = 'http://ec2-51-20-187-125.eu-north-1.compute.amazonaws.com:5000/api') {
         this.baseUrl = baseUrl;
     }
 

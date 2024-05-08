@@ -1,4 +1,4 @@
-name: AWS EC2 instance deploy
+name: AWS CD
 
 on:
   workflow_run:

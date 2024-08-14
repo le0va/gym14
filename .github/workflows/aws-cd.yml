@@ -22,12 +22,7 @@ jobs:
         port: 22 
         script: |
           set -e
-          cd /home/ubuntu
-          sudo docker compose stop
-          sudo docker compose rm -f
-          sudo docker compose pull
-          sudo docker compose up -d
-          sudo docker image prune -af
+          
 # jobs:
 
 #   deploy:
@@ -56,3 +51,10 @@ jobs:
 #           sudo docker image prune -af
 #         # Comment for Send-Command
 #         comment: docker-compose.yml file re-pulls newer versions of gym14 images and runs them on the instance
+
+# cd /home/ubuntu
+#           sudo docker compose stop
+#           sudo docker compose rm -f
+#           sudo docker compose pull
+#           sudo docker compose up -d
+#           sudo docker image prune -af

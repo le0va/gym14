@@ -31,6 +31,7 @@ services:
       - /etc/letsencrypt/live/gym14.kpi.in.ua/fullchain.pem:/etc/letsencrypt/live/gym14.kpi.in.ua/fullchain.pem
       - /etc/letsencrypt/live/gym14.kpi.in.ua/privkey.pem:/etc/letsencrypt/live/gym14.kpi.in.ua/privkey.pem
       - /etc/letsencrypt/options-ssl-nginx.conf:/etc/letsencrypt/options-ssl-nginx.conf
+      - /etc/letsencrypt/ssl-dhparams.pem:/etc/letsencrypt/ssl-dhparams.pem
     ports:
       - "3000:3000"
       - "443:443"
@@ -49,3 +50,51 @@ volumes:
 networks:
   app:
     driver: bridge
+
+
+# version: "3"
+
+# services:
+
+#   database:
+#     image: trueleova/gym-database:latest
+#     container_name: database
+#     volumes:
+#     - database:/var/lib/postgresql/data
+#     networks:
+#       - app
+#     env_file:
+#     - database.env
+
+#   backend:
+#     image: trueleova/gym-backend:latest
+#     container_name: backend
+#     ports:
+#       - "5000:5000"
+#     networks:
+#       - app
+#     depends_on:
+#       - database
+#     env_file:
+#     - backend.env
+
+#   frontend:
+#     image: trueleova/gym-frontend:latest
+#     container_name: frontend
+#     ports:
+#       - "3000:3000"
+#       - "80:80"
+#     networks:
+#       - app
+#     depends_on:
+#       - backend
+#     env_file:
+#     - frontend.env
+
+# volumes:
+#   database:
+#     driver: local
+
+# networks:
+#   app:
+#     driver: bridge

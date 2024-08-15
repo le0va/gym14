@@ -3,22 +3,17 @@ version: "3"
 services:
 
   database:
-    build:
-      context: ./database
-      dockerfile: Dockerfile
+    image: trueleova/gym-database:latest
     container_name: database
     volumes:
     - database:/var/lib/postgresql/data
     networks:
       - app
     env_file:
-    - ./database/docker.env
+    - database.env
 
   backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-      target: production
+    image: trueleova/gym-backend:latest
     container_name: backend
     ports:
       - "5000:5000"
@@ -27,13 +22,10 @@ services:
     depends_on:
       - database
     env_file:
-    - ./backend/.env
+    - backend.env
 
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-      target: production
+    image: trueleova/gym-frontend:latest
     container_name: frontend
     ports:
       - "3000:3000"
@@ -43,7 +35,7 @@ services:
     depends_on:
       - backend
     env_file:
-    - ./frontend/.env
+    - frontend.env
 
 volumes:
   database:

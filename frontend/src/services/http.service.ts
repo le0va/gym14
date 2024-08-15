@@ -4,7 +4,7 @@ import { IGetConfig, IPostConfig, IPatchConfig } from "../types";
 class HttpService {
     baseUrl: string;
 
-    constructor(baseUrl = 'https://ec2-51-20-248-202.eu-north-1.compute.amazonaws.com/api') {
+    constructor(baseUrl = 'https://gym14.kpi.in.ua/api') {
         this.baseUrl = baseUrl;
     }
 

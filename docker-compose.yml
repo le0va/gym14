@@ -27,8 +27,13 @@ services:
   frontend:
     image: trueleova/gym-frontend:latest
     container_name: frontend
+    volumes:
+      - /etc/letsencrypt/live/gym14.kpi.in.ua/fullchain.pem:/etc/letsencrypt/live/gym14.kpi.in.ua/fullchain.pem
+      - /etc/letsencrypt/live/gym14.kpi.in.ua/privkey.pem:/etc/letsencrypt/live/gym14.kpi.in.ua/privkey.pem
+      - /etc/letsencrypt/options-ssl-nginx.conf:/etc/letsencrypt/options-ssl-nginx.conf
     ports:
       - "3000:3000"
+      - "443:443"
       - "80:80"
     networks:
       - app

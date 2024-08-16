@@ -13,6 +13,11 @@ export class UsersController {
     ) { }
 
     @Get()
+    test() {
+        return 'works';
+    }
+
+    @Get()
     getUsers(@Query('filter') filter: string) {
         return this.usersService.getUsers(filter);
     }

@@ -5,7 +5,7 @@ import AppRouter from './navigation/AppRouter';
 import './index.css';
 
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID || '';
-console.log("Client id" + clientId);
+console.log("Client ID:", process.env.REACT_APP_GOOGLE_CLIENT_ID);
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement

@@ -64,3 +64,5 @@ jobs:
         file: ./frontend/Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/gym-frontend:latest
+        build-args: |
+          REACT_APP_GOOGLE_CLIENT_ID=${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }}
